@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# Fast Scroll
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Fast Scroll Build](readme/build.png)
 
-Currently, two official plugins are available:
+**Fast Scroll** es una extensión de Chrome que te permite aumentar o disminuir la velocidad del scroll manteniendo presionada la tecla `Alt`. Ideal para navegar rápidamente por páginas largas o documentos extensos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características
 
-## React Compiler
+- **Control de velocidad**: Aumenta la velocidad del scroll simplemente manteniendo presionada la tecla `Alt`.
+- **Integración nativa**: Funciona en cualquier página web.
+- **Ligera y rápida**: Construida con tecnologías modernas para un rendimiento óptimo.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 🛠️ Tecnologías
 
-## Expanding the ESLint configuration
+Este proyecto está construido con:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Bun](https://bun.sh/) (Runtime & Package Manager)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📥 Instalación y Configuración
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Para ejecutar este proyecto localmente o construir la extensión, sigue estos pasos:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clonar el repositorio
+
+```bash
+git clone <url-del-repositorio>
+cd fast-scroll-chrome-extension
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instalar dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Asegúrate de tener [Bun](https://bun.sh/) instalado.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+bun install
 ```
+
+### 3. Construir la extensión
+
+Ejecuta el comando de setup que se encarga de construir tanto la aplicación de React como los content scripts y mover los archivos necesarios a la carpeta final `extension/`.
+
+```bash
+bun run setup:extension
+```
+
+Este comando realizará las siguientes tareas:
+- Construirá la aplicación Vite.
+- Limpiará la carpeta `extension/`.
+- Compilará los scripts de contenido (`content.js`).
+- Copiará los iconos y el manifiesto.
+
+### 4. Cargar en Google Chrome
+
+1. Abre Chrome y ve a `chrome://extensions/`.
+2. Activa el **Modo de desarrollador** (Developer mode) en la esquina superior derecha.
+3. Haz clic en el botón **Cargar descomprimida** (Load unpacked).
+4. Selecciona la carpeta `extension/` que se generó en la raíz de tu proyecto.
+
+¡Listo! La extensión debería estar activa y funcionando.
+
+## 🤝 Contribuir
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar Fast Scroll, por favor sigue estos pasos:
+
+1. Haz un Fork del proyecto.
+2. Crea una nueva rama (`git checkout -b feature/nueva-caracteristica`).
+3. Realiza tus cambios y haz commit (`git commit -m 'Agrega nueva característica'`).
+4. Haz push a la rama (`git push origin feature/nueva-caracteristica`).
+5. Abre un Pull Request.
+
+---
+
+Desarrollado con ❤️ usando React y Vite.
