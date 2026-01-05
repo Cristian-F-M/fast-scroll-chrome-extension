@@ -4,5 +4,9 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+	build: {
+		assetsDir: ''
+	},
+	base: '/popup/',
 	plugins: [react(), tailwindcss()]
 })
