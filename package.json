@@ -8,7 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "setup:extension": "bun run build && shx mv dist/* extension"
+    "clean:extension": "shx rm -rf extension/ && shx mkdir extension/ && shx mkdir extension/popup/ && shx mkdir extension/icons/",
+    "build:content": "tsc extension-src/js/**/* --outDir extension/",
+    "copy:icons": "shx cp -r extension-src/icons/**/* extension/icons/",
+    "copy:extension": "shx cp manifest.json extension/ && shx cp -r dist/* extension/popup/",
+    "setup:extension": "bun run build && bun run clean:extension && bun run build:content && bun run copy:icons && bun run copy:extension"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
