@@ -50,7 +50,8 @@ function onWheel(event: WheelEvent) {
 	if (!target) return
 
 	target.scrollBy({
-		top: event.deltaY * speed
+		top: event.deltaY * speed,
+		behavior: 'instant'
 	})
 }
 
