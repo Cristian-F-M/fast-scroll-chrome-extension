@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+	@apply size-full bg-gray-900 text-gray-100 min-w-[300px] min-h-screen;
+}
+
+#root {
+	@apply min-h-screen flex flex-col;
+}
+
+kbd {
+	@apply px-2 py-1 border border-gray-700 rounded;
+}
