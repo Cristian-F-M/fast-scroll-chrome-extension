@@ -35,8 +35,6 @@ function handleKeyUp(event: KeyboardEvent) {
 	const now = performance.now()
 	const difference = now - altDownAt
 
-	console.log(difference)
-
 	event.preventDefault()
 }
 
